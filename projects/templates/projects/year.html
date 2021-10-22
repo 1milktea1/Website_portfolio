@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {{grades}}
+	{% for grade in grades%}
+		{% load static %}
+	<h1>{{grade.year}}</h1>
+		{{grade.term}}
+		<img src={% static grade.image%}>
+
+	{%endfor%}
+
+</body>
+</html>
