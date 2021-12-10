@@ -34,7 +34,7 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
   font-family: Luam-Regular !important;
   font-size: 22px !important;
-  z-index: 10;
+  z-index: 999 !important;
 }
 
 .year-content {
@@ -46,4 +46,25 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 margin: 0px 100px 0px 100px;
     text-align: center;
     padding: 15px;
+}
+
+.carousel-style {
+  width: 500px;
+  height: 300px;
+}
+
+.middle {
+  position: relative;
+  height:300px;
+}
+
+.middle img {
+  max-width: 100%;
+  max-height:100%;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }
