@@ -70,7 +70,7 @@
 	{% for v in volunteers%}
          <div class="col mb-4">
 	<div class="card volunteer-card" style="width: 18rem; margin: 0 auto; float: none; margin-bottom: 10px;">
-       <a href= {{v.description}}>
+       <a href={{v.description}} target="_blank">
   <img src={% static v.image%} class="card-img-top" alt="...">
   <div class="card-body">
     <p class="card-text">Accumulated hours for {{v.name}}</p>
