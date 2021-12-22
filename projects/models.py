@@ -16,4 +16,3 @@ class VolunteerHours(models.Model):
     description = models.TextField()
     year = models.CharField(max_length=20)
     image = models.CharField(max_length=100)
-

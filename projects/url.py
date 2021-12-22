@@ -1,5 +1,10 @@
 from django.urls import path
 from projects import views
 
+app_name = 'projects'
+
 urlpatterns = [
-    path('', views.all_grades)]
+    path('<str:year>', views.all_grades, name='all_grades'),
+    path('', views.home_page)
+]
+
