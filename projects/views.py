@@ -13,7 +13,13 @@ from projects.models import SchoolGrade, VolunteerHours
 
 
 def all_grades(request, year):
-    year_dict = {"freshman": "Year 9", "sophomore": "Year 10", "junior": "Year 11", "senior": "Year 12"}
+    year_dict = {
+        "freshman": "Year 9",
+        "sophomore": "Year 10",
+        "junior": "Year 11",
+        "senior": "Year 12"
+    }
+
     y = year_dict[year]
     volunteers = VolunteerHours.objects.filter(year=y)
     grades = SchoolGrade.objects.filter(year=y)
