@@ -8,3 +8,5 @@ urlpatterns = [
     path('', views.home_page)
 ]
 
+
+Others_url = 'http://yumeng-zou-highschool.herokuapp.com/others'
