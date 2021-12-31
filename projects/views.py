@@ -1,7 +1,13 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-from projects.models import SchoolGrade, VolunteerHours
+from projects.models import (
+    SchoolGrade,
+    VolunteerHours,
+    Highlights,
+    HighlightImage,
+    HighlightVideo,
+)
 
 
 # HttpResponse = response to what you requested on the page after request
@@ -17,15 +23,32 @@ def all_grades(request, year):
         "freshman": "Year 9",
         "sophomore": "Year 10",
         "junior": "Year 11",
-        "senior": "Year 12"
+        "senior": "Year 12",
     }
 
     y = year_dict[year]
     volunteers = VolunteerHours.objects.filter(year=y)
     grades = SchoolGrade.objects.filter(year=y)
     print(grades)
-    return render(request, "projects/year.html", {'grades': grades, 'volunteers': volunteers})
+    return render(
+        request, "projects/year.html", {"grades": grades, "volunteers": volunteers}
+    )
 
 
 def home_page(request):
-    return render(request, 'projects/index.html')
+    return render(request, "projects/index.html")
+
+
+def highlights_page(request):
+    highlights = Highlights.objects.all()
+    highlight_images = HighlightImage.objects.all()
+    highlight_videos = HighlightVideo.objects.all()
+    return render(
+        request,
+        "projects/highlights.html",
+        {
+            "highlights": highlights,
+            "images": highlight_images,
+            "videos": highlight_videos,
+        },
+    )

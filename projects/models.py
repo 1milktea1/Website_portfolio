@@ -11,8 +11,24 @@ class SchoolGrade(models.Model):
 
 
 class VolunteerHours(models.Model):
-    name = models.CharField(max_length=100) #textfield doesnt have limit but char does
+    name = models.CharField(max_length=100)  # textfield doesnt have limit but char does
     hours = models.DecimalField(max_digits=5, decimal_places=2)
     description = models.TextField()
     year = models.CharField(max_length=20)
     image = models.CharField(max_length=100)
+
+
+class Highlights(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    link = models.TextField()
+
+
+class HighlightImage(models.Model):
+    image = models.CharField(max_length=100)
+    highlight = models.ForeignKey(Highlights, on_delete=models.CASCADE)
+
+
+class HighlightVideo(models.Model):
+    video = models.TextField(max_length=100)
+    highlight = models.ForeignKey(Highlights, on_delete=models.CASCADE)
