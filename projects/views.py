@@ -42,13 +42,20 @@ def home_page(request):
 def highlights_page(request):
     highlights = Highlights.objects.all()
     highlight_images = HighlightImage.objects.all()
+    d_images = dict()
+    for i in highlight_images:
+        if i.highlight.id in d_images.keys():
+            d_images[i.highlight.id].append(i.image)
+        else:
+            d_images[i.highlight.id] = [i.image]
     highlight_videos = HighlightVideo.objects.all()
     return render(
         request,
         "projects/highlights.html",
         {
             "highlights": highlights,
-            "images": highlight_images,
+            "images": d_images,
             "videos": highlight_videos,
         },
     )
+

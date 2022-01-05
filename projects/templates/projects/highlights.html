@@ -53,15 +53,17 @@
         {% for highlight in highlights%}
             <h3>{{highlight.title}}</h3>
             <p>{{highlight.description}}</p>
-            {% for image in images %}
-                <img src={% static image.image%} width="200">
+            {% for key, value in d_images.items %}
+                {% if key == highlight.id %}
+                    <img src={% static value.0 %} width="200">
+                {% endif %}
+            {% endfor %}
             {%for video in videos %}
-                <video src={% static videos%} width = "300"></video>
+                <iframe width="400" height="200" src={{video.video}} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             {% endfor %}
-            {% endfor %}
+
         {% endfor %}
-
-
+    </div>
 
 
 </body>
