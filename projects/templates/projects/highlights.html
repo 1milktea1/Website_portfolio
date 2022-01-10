@@ -50,20 +50,65 @@
         <h1>Highlights of Me</h1>
         </div>
 
+
+    <div class="container">
+	        <div class="row">
         {% for highlight in highlights%}
+
+
+         <div class="col-6">
             <h3>{{highlight.title}}</h3>
             <p>{{highlight.description}}</p>
-            {% for key, value in d_images.items %}
+         </div>
+         <div class="col-6">
+             <div id="carouselExampleControls" class="carousel slide" style=" width: 100%; height: 500px;"  data-ride="carousel">
+  <div class="carousel-inner">
+            {% for key, value in images.items %}
                 {% if key == highlight.id %}
-                    <img src={% static value.0 %} width="200">
+      {%if forloop.counter == 1%}
+      <div class="carousel-item active">
+          {% endif %}
+      {%if forloop.counter != 1%}
+      <div class="carousel-item">
+          {% endif %}
+      <div style="position: relative; height:500px;">
+      <img class="d-block h-100" src={% static value.0 %} alt="Second slide" style="max-width: 100%; max-height:100%; margin: auto; position: absolute; left: 0; right: 0; top: 0; bottom: 0;">
+        </div>
+    </div>
                 {% endif %}
             {% endfor %}
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" >
+    <!--<span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+    <span class="sr-only" style="color: #000000; font-family:Luam-Regular; font-size: 20px">Previous <</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+
+    <span class="sr-only" style="color: #000000; font-family:Luam-Regular; font-size: 20px">> Next</span>
+  </a>
+</div>
+             </div>
+
+
+          {% ifequal forloop.counter|divisibleby:"2" False %}
+          <div class="col-6">
             {%for video in videos %}
                 <iframe width="400" height="200" src={{video.video}} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             {% endfor %}
-
+            </div>
+             <div class="col-6">
+            <h3>{{highlight.title}}</h3>
+            <p>{{highlight.description}}</p>
+         </div>
+          {% endifequal %}
         {% endfor %}
+
+
     </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
 
 </body>

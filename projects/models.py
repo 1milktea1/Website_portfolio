@@ -7,7 +7,7 @@ class SchoolGrade(models.Model):
     term = models.CharField(max_length=20)
     image = models.CharField(max_length=100)
     description = models.TextField()
-    highlights = models.TextField(null=True)
+    highlights = models.TextField(blank=True, null=True)
 
 
 class VolunteerHours(models.Model):
@@ -20,8 +20,8 @@ class VolunteerHours(models.Model):
 
 class Highlights(models.Model):
     title = models.CharField(max_length=100)
-    description = models.TextField()
-    link = models.TextField()
+    description = models.TextField(blank=True, null=True)
+    link = models.TextField(blank=True, null=True)
 
 
 class HighlightImage(models.Model):
