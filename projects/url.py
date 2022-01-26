@@ -8,7 +8,3 @@ urlpatterns = [
     path("<str:year>", views.all_grades, name="all_grades"),
     path("", views.home_page),
 ]
-
-'''
-                            <!--{%if forloop.counter == 1%}-->
-'''

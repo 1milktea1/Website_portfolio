@@ -29,7 +29,6 @@ def all_grades(request, year):
     y = year_dict[year]
     volunteers = VolunteerHours.objects.filter(year=y)
     grades = SchoolGrade.objects.filter(year=y)
-    print(grades)
     return render(
         request, "projects/year.html", {"grades": grades, "volunteers": volunteers}
     )
@@ -49,13 +48,19 @@ def highlights_page(request):
         else:
             d_images[i.highlight.id] = [i.image]
     highlight_videos = HighlightVideo.objects.all()
+    d_videos = dict()
+    for i in highlight_videos:
+        if i.highlight.id in d_videos.keys():
+            d_videos[i.highlight.id].append(i.video)
+        else:
+            d_videos[i.highlight.id] = [i.video]
     return render(
         request,
         "projects/highlights.html",
         {
             "highlights": highlights,
             "images": d_images,
-            "videos": highlight_videos,
+            "videos": d_videos,
         },
     )
 
