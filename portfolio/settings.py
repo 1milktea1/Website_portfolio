@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["ericayzou.herokuapp.com", "127.0.0.1"]
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 # Application definition
 
